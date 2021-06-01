@@ -1,16 +1,7 @@
 import React from "react"
 
-function Header() {
-  return (
-    <div>
-      <ul>
-        <li>Home</li>
-        <li>Login</li>
-        <li>Dashboard</li>
-        <li>Add Question</li>
-      </ul>
-    </div>
-  )
+function Header({ children }) {
+  return <div className="navbar">{children}</div>
 }
 
 export default Header

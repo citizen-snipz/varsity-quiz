@@ -3,7 +3,7 @@ import React from "react"
 function QuestionCard(props) {
   //Make color-coded tags display at bottom of card
   return (
-    <div>
+    <div className="card">
       <h3>Question: {props.question}</h3>
       <h3>Answer: {props.answer}</h3>
       <h3>{props.bonus && `Bonus Question:  ${props.bonus}`}</h3>

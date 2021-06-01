@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.addQuestionForm {
+  width: 50%;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: gainsboro;
+  color: green;
+  border: 2px solid forestgreen;
+}
+
+input,
+label {
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
+div.error,
+label.checkbox-input,
+button {
+  width: 100%;
+}

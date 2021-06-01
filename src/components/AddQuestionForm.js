@@ -54,31 +54,25 @@ const MySelect = ({ label, ...props }) => {
 const AddQuestionForm = () => {
   return (
     <>
-      <h1>Subscribe!</h1>
+      <h1>Add Question</h1>
       <Formik
         initialValues={{
-          firstName: "",
-          lastName: "",
-          email: "",
-          acceptedTerms: false, // added for our checkbox
-          jobType: "" // added for our select
+          question: "",
+          answer: "",
+          year: "",
+          match: "",
+          bonus: false, // added for our checkbox
+          category: "" // added for our select
         }}
         validationSchema={Yup.object({
-          firstName: Yup.string()
-            .max(15, "Must be 15 characters or less")
-            .required("Required"),
-          lastName: Yup.string()
-            .max(20, "Must be 20 characters or less")
-            .required("Required"),
-          email: Yup.string()
-            .email("Invalid email address")
-            .required("Required"),
-          acceptedTerms: Yup.boolean()
-            .required("Required")
-            .oneOf([true], "You must accept the terms and conditions."),
-          jobType: Yup.string()
+          question: Yup.string().required("Required"),
+          answer: Yup.string().required("Required"),
+          year: Yup.string().required("Required"),
+          match: Yup.string().required("Required"),
+          bonus: Yup.boolean(),
+          category: Yup.string()
             .oneOf(
-              ["designer", "development", "product", "other"],
+              ["history", "math", "science", "vocabulary"],
               "Invalid Job Type"
             )
             .required("Required")
@@ -90,38 +84,45 @@ const AddQuestionForm = () => {
           }, 400)
         }}
       >
-        <Form>
+        <Form className="addQuestionForm">
           <MyTextInput
-            label="First Name"
-            name="firstName"
+            label="Question"
+            name="question"
             type="text"
-            placeholder="Jane"
+            placeholder="Question"
           />
 
           <MyTextInput
-            label="Last Name"
-            name="lastName"
+            label="Answer"
+            name="answer"
             type="text"
-            placeholder="Doe"
+            placeholder="Answer"
           />
 
           <MyTextInput
-            label="Email Address"
-            name="email"
-            type="email"
-            placeholder="jane@formik.com"
+            label="Year"
+            name="year"
+            type="text"
+            placeholder="Year"
           />
 
-          <MySelect label="Job Type" name="jobType">
-            <option value="">Select a job type</option>
-            <option value="designer">Designer</option>
-            <option value="development">Developer</option>
-            <option value="product">Product Manager</option>
-            <option value="other">Other</option>
+          <MyTextInput
+            label="Match"
+            name="match"
+            type="match"
+            placeholder="ex: 'QF1' for Quarter Finals round 1"
+          />
+
+          <MySelect label="Category" name="category">
+            <option value="">Select a category</option>
+            <option value="history">History</option>
+            <option value="math">Math</option>
+            <option value="science">Science</option>
+            <option value="vocabulary">Vocabulary</option>
           </MySelect>
 
-          <MyCheckbox name="acceptedTerms">
-            I accept the terms and conditions
+          <MyCheckbox name="bonus">
+            Check the box if this is a bonus question
           </MyCheckbox>
 
           <button type="submit">Submit</button>
