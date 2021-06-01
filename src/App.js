@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import Header from "./components/Header"
+import QuestionCard from "./components/QuestionCard"
+import Footer from "./components/Footer"
+import questions from "./questionsDB"
+import React from "react"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super()
+  }
+  render() {
+    // const questionList = questionsDB.map(question => <QuestionCard key={question.id} />)
+    return (
+      <div className="App">
+        <Header />
+        <QuestionCard />
+        <Footer />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
