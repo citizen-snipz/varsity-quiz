@@ -97,3 +97,16 @@ input.selected {
   background-color: orchid;
   color: white;
 }
+
+.card {
+  width: 60%;
+  height: fit-content;
+  background-color: papayawhip;
+  border: 2px solid rgb(252, 210, 173);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  margin: 1.5rem auto;
+  padding: 2rem 3.5rem;
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.5rem;
+}
