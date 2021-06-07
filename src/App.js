@@ -9,7 +9,7 @@ import axios from "axios"
 import QuestionFeed from "./components/QuestionFeed"
 
 function App() {
-  const [results, setResults] = useState(null)
+  const [questions, setQuestions] = useState(null)
 
   async function requestApi(method, path, body = {}) {
     const data = await axios[method](
@@ -17,35 +17,27 @@ function App() {
       body
     )
     console.log(data)
-    return data.data
+    return data
   }
 
   useEffect(() => {
     async function getWholeFeed() {
-      const questions = await requestApi("get", "/questions")
-      setResults(questions)
+      const data = await requestApi("get", "/questions")
+      setQuestions(data.data.questions)
     }
     getWholeFeed()
   }, [])
-  // const questionList = questionsDB.map(question => <QuestionCard key={question.id} />)
   return (
     <BrowserRouter>
       <div className="App">
         <Header>
-          <ul>
-            <li>
-              <NavLink to="/">Login</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/feed">Feed</NavLink>
-            </li>
-            <li>
-              <NavLink to="/create">Add Question</NavLink>
-            </li>
-          </ul>
+          <NavLink to="/">Login</NavLink>
+
+          <NavLink to="/">Home</NavLink>
+
+          <NavLink to="/feed">Feed</NavLink>
+
+          <NavLink to="/create">Add Question</NavLink>
         </Header>
         <Switch>
           <Route exact path="/">
@@ -54,10 +46,10 @@ function App() {
             <Link to="/feed">Start Practice</Link>
           </Route>
           <Route path="/feed">
-            {results && <QuestionFeed questions={results.questions} />}
+            {questions && <QuestionFeed questions={questions} />}
           </Route>
           <Route path="/create">
-            <AddQuestionForm />
+            <AddQuestionForm requestApi={requestApi} />
           </Route>
         </Switch>
         <Footer />

@@ -37,26 +37,63 @@
   }
 }
 
+/* Personal styling */
+
+ul.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: black;
+}
+
+.navbar * {
+  list-style: none;
+  padding: 0.6rem;
+  color: rgb(211, 210, 208);
+  text-decoration: none;
+}
+
 .addQuestionForm {
-  width: 50%;
+  width: 60%;
   margin: 2rem auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  background-color: gainsboro;
+  background-color: rgb(235, 228, 228);
   color: green;
   border: 2px solid forestgreen;
+  border-radius: 15px;
+}
+
+div.error {
+  color: red;
 }
 
 input,
 label {
-  padding: 0.5rem;
-  margin: 1rem;
+  padding: 0.3rem;
+  margin: 0.4rem;
 }
 
-div.error,
-label.checkbox-input,
 button {
+  width: fit-content;
+  padding: 0.2rem 0.6rem;
+  margin: 0.6rem 40%;
+  color: darkorange;
+  background-color: rgb(23, 88, 23);
+  border-radius: 5px;
+}
+
+.card h3 {
   width: 100%;
+}
+
+.long-input {
+  width: 55%;
+}
+
+input.selected {
+  background-color: orchid;
+  color: white;
 }

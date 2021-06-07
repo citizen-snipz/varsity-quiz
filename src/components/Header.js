@@ -1,7 +1,7 @@
 import React from "react"
 
 function Header({ children }) {
-  return <div className="navbar">{children}</div>
+  return <ul className="navbar">{children}</ul>
 }
 
 export default Header

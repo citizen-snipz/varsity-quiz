@@ -1,5 +1,6 @@
 import React from "react"
-import { Formik, Form, useField } from "formik"
+import { Formik, Form, useField, FieldArray } from "formik"
+import CategoryTag from "./CategoryTag"
 import * as Yup from "yup"
 
 const MyTextInput = ({ label, ...props }) => {
@@ -51,7 +52,8 @@ const MySelect = ({ label, ...props }) => {
 }
 
 // And now we can use these
-const AddQuestionForm = () => {
+const AddQuestionForm = ({ requestApi }) => {
+  const categoryOptions = ["history", "math", "science", "vocabulary"]
   return (
     <>
       <h1>Add Question</h1>
@@ -62,71 +64,105 @@ const AddQuestionForm = () => {
           year: "",
           match: "",
           bonus: false, // added for our checkbox
-          category: "" // added for our select
+          categories: []
         }}
         validationSchema={Yup.object({
           question: Yup.string().required("Required"),
           answer: Yup.string().required("Required"),
-          year: Yup.string().required("Required"),
+          year: Yup.number().required("Required"),
           match: Yup.string().required("Required"),
           bonus: Yup.boolean(),
-          category: Yup.string()
-            .oneOf(
-              ["history", "math", "science", "vocabulary"],
-              "Invalid Job Type"
-            )
+          categories: Yup.array()
+            // .oneOf(
+            //   ["history", "math", "science", "vocabulary"],
+            //   "Invalid Category"
+            // )
             .required("Required")
         })}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 400)
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
+          setSubmitting(true)
+          console.log("submitting")
+          const post = await requestApi(
+            "post",
+            "/questions/addQuestion",
+            values
+          )
+          setSubmitting(false)
+          resetForm()
         }}
       >
-        <Form className="addQuestionForm">
-          <MyTextInput
-            label="Question"
-            name="question"
-            type="text"
-            placeholder="Question"
-          />
+        {(values) => (
+          <Form className="addQuestionForm">
+            <MyTextInput
+              className="long-input input-wrapper"
+              label="Question"
+              name="question"
+              type="text"
+              placeholder="Question"
+            />
 
-          <MyTextInput
-            label="Answer"
-            name="answer"
-            type="text"
-            placeholder="Answer"
-          />
+            <MyTextInput
+              className="long-input input-wrapper"
+              label="Answer"
+              name="answer"
+              type="text"
+              placeholder="Answer"
+            />
 
-          <MyTextInput
-            label="Year"
-            name="year"
-            type="text"
-            placeholder="Year"
-          />
+            <MyTextInput
+              className="input-wrapper"
+              label="Year"
+              name="year"
+              type="number"
+              placeholder="Year"
+            />
 
-          <MyTextInput
-            label="Match"
-            name="match"
-            type="match"
-            placeholder="ex: 'QF1' for Quarter Finals round 1"
-          />
+            <MyTextInput
+              className="input-wrapper"
+              label="Match"
+              name="match"
+              type="match"
+              placeholder="ex: 'QF1' for Quarter Finals round 1"
+            />
 
-          <MySelect label="Category" name="category">
+            <FieldArray
+              name="categories"
+              render={(arrayHelpers) => (
+                <div>
+                  {categoryOptions.map((category, i) => (
+                    <CategoryTag
+                      {...values}
+                      {...arrayHelpers}
+                      key={i}
+                      index={i}
+                      name={category}
+                    />
+                  ))}
+                </div>
+              )}
+            />
+
+            {/* <MySelect
+            className="input-wrapper"
+            label="Category"
+            name="categories"
+          >
             <option value="">Select a category</option>
             <option value="history">History</option>
             <option value="math">Math</option>
             <option value="science">Science</option>
             <option value="vocabulary">Vocabulary</option>
-          </MySelect>
+          </MySelect> */}
 
-          <MyCheckbox name="bonus">
-            Check the box if this is a bonus question
-          </MyCheckbox>
+            <MyCheckbox className="input-wrapper" name="bonus">
+              Check the box if this is a bonus question
+            </MyCheckbox>
 
-          <button type="submit">Submit</button>
-        </Form>
+            <button className="input-wrapper" type="submit">
+              Submit
+            </button>
+          </Form>
+        )}
       </Formik>
     </>
   )

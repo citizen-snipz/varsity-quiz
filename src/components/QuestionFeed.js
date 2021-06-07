@@ -4,8 +4,8 @@ import QuestionCard from "./QuestionCard"
 function QuestionFeed({ questions }) {
   return (
     <React.Fragment>
-      {questions.map((question) => (
-        <QuestionCard key={question.id} {...question} />
+      {questions.map((question, i) => (
+        <QuestionCard key={question._id} {...question} />
       ))}
     </React.Fragment>
   )
