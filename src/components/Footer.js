@@ -3,7 +3,7 @@ import React from "react"
 function Footer() {
   return (
     <footer>
-      <span>Mojave Varsity Quiz</span>
+      <span>Made especially for Mojave Varsity Quiz </span>
     </footer>
   )
 }
