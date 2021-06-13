@@ -52,8 +52,7 @@ const MySelect = ({ label, ...props }) => {
 }
 
 // And now we can use these
-const AddQuestionForm = ({ requestApi }) => {
-  const categoryOptions = ["history", "math", "science", "vocabulary"]
+const AddQuestionForm = ({ categories, requestApi }) => {
   return (
     <>
       <h1>Add Question</h1>
@@ -129,7 +128,7 @@ const AddQuestionForm = ({ requestApi }) => {
               name="categories"
               render={(arrayHelpers) => (
                 <div>
-                  {categoryOptions.map((category, i) => (
+                  {categories.map((category, i) => (
                     <CategoryTag
                       {...values}
                       {...arrayHelpers}

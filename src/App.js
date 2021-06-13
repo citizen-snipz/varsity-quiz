@@ -7,9 +7,11 @@ import AddQuestionForm from "./components/AddQuestionForm"
 import { BrowserRouter, Switch, Route, Link, NavLink } from "react-router-dom"
 import axios from "axios"
 import QuestionFeed from "./components/QuestionFeed"
+import Home from "./components/Home"
 
 function App() {
   const [questions, setQuestions] = useState(null)
+  const [dataOptions, setDataOptions] = useState(null)
 
   async function requestApi(method, path, body = {}) {
     const data = await axios[method](
@@ -22,11 +24,16 @@ function App() {
 
   useEffect(() => {
     async function getWholeFeed() {
-      const data = await requestApi("get", "/questions")
-      setQuestions(data.data.questions)
+      const data = await Promise.all([
+        requestApi("get", "/dataOptions"),
+        requestApi("get", "/questions")
+      ])
+      setDataOptions(data[0].data)
+      setQuestions(data[1].data.questions)
     }
     getWholeFeed()
   }, [])
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -41,15 +48,18 @@ function App() {
         </Header>
         <Switch>
           <Route exact path="/">
-            <h2>Welcome to Varsity Quiz App!</h2>
-            <p>To get started, click the button below</p>
-            <Link to="/feed">Start Practice</Link>
+            {dataOptions && <Home dataOptions={dataOptions} />}
           </Route>
           <Route path="/feed">
             {questions && <QuestionFeed questions={questions} />}
           </Route>
           <Route path="/create">
-            <AddQuestionForm requestApi={requestApi} />
+            {dataOptions && (
+              <AddQuestionForm
+                requestApi={requestApi}
+                categories={dataOptions.categories}
+              />
+            )}
           </Route>
         </Switch>
         <Footer />
