@@ -24,14 +24,18 @@ function App() {
 
   useEffect(() => {
     async function getWholeFeed() {
-      const data = await Promise.all([
-        requestApi("get", "/dataOptions"),
-        requestApi("get", "/questions")
-      ])
-      setDataOptions(data[0].data)
-      setQuestions(data[1].data.questions)
+      const { data } = await requestApi("get", "/questions")
+      setQuestions(data.questions)
     }
     getWholeFeed()
+  }, [])
+
+  useEffect(() => {
+    async function getDataOptions() {
+      const { data } = await requestApi("get", "/dataOptions")
+      setDataOptions(data)
+    }
+    getDataOptions()
   }, [])
 
   return (

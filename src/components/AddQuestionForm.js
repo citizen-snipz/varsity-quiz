@@ -92,55 +92,62 @@ const AddQuestionForm = ({ categories, requestApi }) => {
       >
         {(values) => (
           <Form className="addQuestionForm">
-            <MyTextInput
-              className="long-input input-wrapper"
-              label="Question"
-              name="question"
-              type="text"
-              placeholder="Question"
-            />
-
-            <MyTextInput
-              className="long-input input-wrapper"
-              label="Answer"
-              name="answer"
-              type="text"
-              placeholder="Answer"
-            />
-
-            <MyTextInput
-              className="input-wrapper"
-              label="Year"
-              name="year"
-              type="number"
-              placeholder="Year"
-            />
-
-            <MyTextInput
-              className="input-wrapper"
-              label="Match"
-              name="match"
-              type="match"
-              placeholder="ex: 'QF1' for Quarter Finals round 1"
-            />
-
-            <FieldArray
-              name="categories"
-              render={(arrayHelpers) => (
-                <div>
-                  {categories.map((category, i) => (
-                    <CategoryTag
-                      {...values}
-                      {...arrayHelpers}
-                      key={i}
-                      index={i}
-                      name={category}
-                    />
-                  ))}
-                </div>
-              )}
-            />
-
+            <div className="input-wrapper">
+              <MyTextInput
+                as="textarea"
+                className="long-input "
+                label="Question"
+                name="question"
+                type="text"
+                placeholder="Question"
+              />
+            </div>
+            <div className="input-wrapper">
+              <MyTextInput
+                className="long-input"
+                label="Answer"
+                name="answer"
+                type="text"
+                placeholder="Answer"
+              />
+            </div>
+            <div className="input-wrapper">
+              <MyTextInput
+                label="Year"
+                name="year"
+                type="number"
+                placeholder="Year"
+              />
+            </div>
+            <div className="input-wrapper">
+              <MyTextInput
+                label="Match"
+                name="match"
+                type="match"
+                placeholder="ex: 'QF1' for Quarter Finals round 1"
+              />
+            </div>
+            <div className="input-wrapper ">
+              <p className="cat-label">Categories:</p>
+              <FieldArray
+                name="categories"
+                label="Categories"
+                render={(arrayHelpers) => (
+                  <div>
+                    {categories.map((category, i) => (
+                      <CategoryTag
+                        {...values}
+                        {...arrayHelpers}
+                        key={i}
+                        index={i}
+                        name={category}
+                        className="category-btn"
+                      />
+                    ))}
+                  </div>
+                )}
+              />
+            </div>
             {/* <MySelect
             className="input-wrapper"
             label="Category"
@@ -157,9 +164,7 @@ const AddQuestionForm = ({ categories, requestApi }) => {
               Check the box if this is a bonus question
             </MyCheckbox>
 
-            <button className="input-wrapper" type="submit">
-              Submit
-            </button>
+            <button type="submit">Submit</button>
           </Form>
         )}
       </Formik>

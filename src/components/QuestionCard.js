@@ -1,7 +1,6 @@
 import React from "react"
 
 function QuestionCard(props) {
-  //Make color-coded tags display at bottom of card
   return (
     <div className="card">
       <h3>Question: {props.question}</h3>
