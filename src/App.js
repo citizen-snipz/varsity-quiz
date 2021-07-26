@@ -8,13 +8,14 @@ import { BrowserRouter, Switch, Route, Link, NavLink } from "react-router-dom"
 import axios from "axios"
 import QuestionFeed from "./components/QuestionFeed"
 import Home from "./components/Home"
+import FilterOptions from "./components/FilterOptions"
 
 function App() {
   const [questions, setQuestions] = useState(null)
   const [dataOptions, setDataOptions] = useState(null)
 
-  async function requestApi(method, path, body = {}) {
-    const data = await axios[method](
+  async function requestApi(httpMethod, path, body = {}) {
+    const data = await axios[httpMethod](
       `https://varsity-quiz-api.herokuapp.com${path}`,
       body
     )
@@ -52,7 +53,13 @@ function App() {
         </Header>
         <Switch>
           <Route exact path="/">
-            {dataOptions && <Home dataOptions={dataOptions} />}
+            <Home />
+            {dataOptions && (
+              <FilterOptions
+                requestApi={requestApi}
+                dataOptions={dataOptions}
+              />
+            )}
           </Route>
           <Route path="/feed">
             {questions && <QuestionFeed questions={questions} />}
