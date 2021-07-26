@@ -193,3 +193,53 @@ form p {
 .filterCategoryBtn:hover {
   background-color: lightgreen;
 }
+
+.answer {
+  border: 1px solid peachpuff;
+  background-color: hsl(25, 90%, 90%);
+  color: darkorange;
+  font-size: 1.7rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(88, 63, 24, 0.2);
+  border-radius: 10px;
+}
+
+/* Tag styles on question cards*/
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.vocabulary,
+.medicine,
+.math,
+.history,
+.geography {
+  width: fit-content;
+  list-style: none;
+  text-align: center;
+  margin: 0.5rem;
+  padding: 0.2rem 1rem;
+  color: white;
+  border: 2px solid whitesmoke;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3), 2px 2px 2px rgba(88, 63, 24, 0.2);
+}
+
+.vocabulary {
+  background-color: rgb(205, 46, 46);
+}
+.medicine {
+  background-color: rgb(221, 145, 52);
+}
+.math {
+  background-color: rgb(14, 143, 57);
+}
+.history {
+  background-color: rgb(64, 109, 233);
+}
+.geography {
+  background-color: rgb(110, 33, 177);
+}
