@@ -41,7 +41,7 @@
 
 html {
   background-color: rgba(159, 184, 158, 0.8);
-  background-image: url("https://www.transparenttextures.com/patterns/silver-scales.png");
+  background-image: url('https://www.transparenttextures.com/patterns/silver-scales.png');
 }
 
 /* HEADER */
@@ -90,7 +90,7 @@ input {
 /* FORM BUTTONS */
 button,
 a.practiceBtn,
-input[type="button"] {
+input[type='button'] {
   width: fit-content;
   margin: 1rem;
   padding: 0.4rem 0.6rem;
@@ -111,13 +111,13 @@ label,
   font-size: 1.3rem;
 }
 
-input[type="button"] div {
+input[type='button'] div {
   width: 90%;
   display: flex;
   flex-wrap: wrap;
 }
 
-input[type="button"] {
+input[type='button'] {
   height: fit-content;
   background-color: rgb(33, 119, 33);
   color: white;
@@ -147,7 +147,7 @@ input.selected {
   border-radius: 5px;
   margin: 1.5rem auto;
   padding: 2rem 3.5rem;
-  font-family: "Libre Baskerville", serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 1.2rem;
 }
 
@@ -203,6 +203,10 @@ form p {
   padding: 0.5rem;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(88, 63, 24, 0.2);
   border-radius: 10px;
+}
+.hidden {
+  background-color: darkorange;
+  color: white;
 }
 
 /* Tag styles on question cards*/
