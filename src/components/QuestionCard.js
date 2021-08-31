@@ -20,8 +20,9 @@ function QuestionCard(props) {
       <h4>Tags:</h4>
       <ul className="tagsList">
         {props.categories.map((tag) => {
+          let tagFormat = tag.split(' ').join('-');
           return (
-            <li key={tag} className={tag}>
+            <li key={tag} className={`${tagFormat} tag-item`}>
               {tag}
             </li>
           );

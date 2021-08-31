@@ -216,34 +216,95 @@ form p {
   justify-content: center;
   align-items: center;
 }
-.vocabulary,
-.medicine,
-.math,
-.history,
-.geography {
+.tag-item {
   width: fit-content;
   list-style: none;
   text-align: center;
   margin: 0.5rem;
   padding: 0.2rem 1rem;
   color: white;
+  background-color: rgb(146, 145, 143);
   border: 2px solid whitesmoke;
   border-radius: 15px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3), 2px 2px 2px rgba(88, 63, 24, 0.2);
 }
 
-.vocabulary {
+.calculation-and-math {
   background-color: rgb(205, 46, 46);
 }
-.medicine {
-  background-color: rgb(221, 145, 52);
+.science {
+  background-color: rgb(44, 17, 199);
 }
-.math {
+.biology-and-medicine {
+  background-color: rgb(55, 129, 226);
+}
+.us-history-and-government {
+  background-color: rgb(55, 99, 20);
+}
+.us-geography {
+  background-color: rgb(43, 173, 16);
+}
+.literature {
+  background-color: rgb(95, 18, 184);
+}
+.fine-and-performing-arts {
+  background-color: rgb(184, 111, 236);
+}
+.world-history {
   background-color: rgb(14, 143, 57);
 }
-.history {
-  background-color: rgb(64, 109, 233);
+.world-geography {
+  background-color: rgb(27, 216, 153);
 }
-.geography {
+.sports {
+  background-color: rgb(228, 141, 35);
+}
+.vocab {
+  background-color: rgb(228, 64, 214);
+}
+.mythology {
+  background-color: rgb(122, 19, 107);
+}
+.pop-culture {
+  background-color: rgb(230, 121, 78);
+}
+.foreign-vocab {
+  background-color: rgb(175, 71, 207);
+}
+.english-grammar-figurative-language {
   background-color: rgb(110, 33, 177);
 }
+.religion {
+  background-color: rgb(70, 155, 111);
+}
+.proverbs-and-sayings {
+  background-color: rgb(89, 7, 97);
+}
+.nevada-specific-and-current-events {
+  background-color: rgb(90, 146, 138);
+}
+.universities-and-military-and-economics {
+  background-color: rgb(233, 115, 64);
+}
+
+/*
+".calculation-and-math, 
+.science, 
+.biology-and-medicine, 
+.us-history-and-government, 
+.us-geography, 
+.literature, 
+.fine-and-performing-arts, 
+.world-history, 
+.world-geography, 
+.sports, 
+.vocab, 
+.mythology, 
+.pop-culture, 
+.foreign-vocab, 
+.english-grammar-figurative-language, 
+.religion, 
+.proverbs-and-sayings, 
+.nevada-specific-and-current-events, 
+.universities-and-military-and-economics" 
+*/
